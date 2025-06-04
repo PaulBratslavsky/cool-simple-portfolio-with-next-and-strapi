@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_featured_experiences",
+  "info": {
+    "displayName": "Featured Experience"
+  },
+  "options": {},
+  "attributes": {
+    "experiences": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::experience.experience"
+    }
+  },
+  "config": {}
+}

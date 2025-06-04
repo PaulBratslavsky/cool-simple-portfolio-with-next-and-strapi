@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_tasks",
+  "info": {
+    "displayName": "Task"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
