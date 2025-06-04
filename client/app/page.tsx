@@ -1,15 +1,21 @@
-import About from "@/components/about";
-import { Experience } from "@/components/experience";
-import Hero from "@/components/hero";
-import Projects from "@/components/projects";
+import { getHomePageData } from "@/loaders";
+import { BlockRenderer } from "@/components/block-renderer";
+import { Block } from "@/types";
+import { notFound } from "next/navigation";
 
-export default function Home() {
-  return (
-    <div className="space-y-10 sm:space-y-16">
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-    </div>
-  );
+async function loader(): Promise<Block[]> {
+  try {
+    const data = await getHomePageData();
+    if (!data?.data?.blocks) return notFound();
+    return data.data.blocks;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export default async function Home() {
+  const data = await loader();
+
+  return <div>{data ? <BlockRenderer blocks={data} /> : null}</div>;
 }

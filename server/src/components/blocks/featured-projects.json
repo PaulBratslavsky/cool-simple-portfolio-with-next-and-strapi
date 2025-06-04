@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_featured_projects",
+  "info": {
+    "displayName": "Featured Projects"
+  },
+  "options": {},
+  "attributes": {
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    }
+  },
+  "config": {}
+}

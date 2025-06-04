@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_blocks_content_with_images",
+  "info": {
+    "displayName": "Content With Image"
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "links": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isReversed": {
+      "type": "boolean",
+      "default": false
+    },
+    "sectionLink": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

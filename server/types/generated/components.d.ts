@@ -1,5 +1,21 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksContentWithImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_content_with_images';
+  info: {
+    displayName: 'Content With Image';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    content: Schema.Attribute.RichText;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    isReversed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    links: Schema.Attribute.Component<'shared.link', true>;
+    sectionLink: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksFeaturedExperience extends Struct.ComponentSchema {
   collectionName: 'components_blocks_featured_experiences';
   info: {
@@ -10,6 +26,16 @@ export interface BlocksFeaturedExperience extends Struct.ComponentSchema {
       'oneToMany',
       'api::experience.experience'
     >;
+  };
+}
+
+export interface BlocksFeaturedProjects extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_featured_projects';
+  info: {
+    displayName: 'Featured Projects';
+  };
+  attributes: {
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
   };
 }
 
@@ -67,7 +93,9 @@ export interface SharedTasks extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.content-with-image': BlocksContentWithImage;
       'blocks.featured-experience': BlocksFeaturedExperience;
+      'blocks.featured-projects': BlocksFeaturedProjects;
       'blocks.hero': BlocksHero;
       'blocks.section-heading': BlocksSectionHeading;
       'shared.link': SharedLink;

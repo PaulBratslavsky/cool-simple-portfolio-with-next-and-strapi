@@ -17,12 +17,34 @@ const populateQuery = {
           },
         },
       },
+      "blocks.featured-projects": {
+        populate: {
+          projects: {
+            populate: {
+              technologies: true,
+              image: {
+                fields: ["url", "alternativeText", "name"],
+              },
+            },
+
+            sort: "createdAt:desc",
+          },
+        },
+      },
       "blocks.hero": {
         populate: {
           cta: true,
           image: {
             fields: ["url", "alternativeText", "name"],
           },
+        },
+      },
+      "blocks.content-with-image": {
+        populate: {
+          image: {
+            fields: ["url", "alternativeText", "name"],
+          },
+          links: true,
         },
       },
       "blocks.section-heading": true,

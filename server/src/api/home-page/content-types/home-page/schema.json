@@ -22,7 +22,9 @@
       "components": [
         "blocks.featured-experience",
         "blocks.section-heading",
-        "blocks.hero"
+        "blocks.hero",
+        "blocks.content-with-image",
+        "blocks.featured-projects"
       ]
     }
   }
