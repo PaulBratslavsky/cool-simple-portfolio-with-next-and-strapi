@@ -17,10 +17,11 @@ export function LogoLink({ image, link }: LogoProps) {
     <Link href={link.href} className="flex items-center gap-2">
       <StrapiImage
         src={image.url}
-    alt={image.alternativeText}
-    width={32}
-    height={32}
-  />
+        alt={image.alternativeText}
+        width={32}
+        height={32}
+        className="dark:invert"
+      />
       <span className="text-sm font-bold text-foreground">{link.label}</span>
     </Link>
   );

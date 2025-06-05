@@ -5,6 +5,7 @@ import { NavMenu } from "@/components/navbar/nav-menu";
 import { NavigationSheet } from "@/components/navbar/navigation-sheet";
 import Link from "next/link";
 import { IconSelector } from "./icon-selector";
+import { ThemeToggle } from "../theme-toggle";
 
 interface NavbarProps {
   logo: Logo;
@@ -33,6 +34,7 @@ export function Navbar({ logo, navigation, socialLinks }: NavbarProps) {
           <div className="md:hidden">
             <NavigationSheet logo={logo} navItems={navigation.navItems} />
           </div>
+          <ThemeToggle />
         </div>
       </div>
     </nav>

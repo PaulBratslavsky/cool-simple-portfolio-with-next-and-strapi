@@ -19,20 +19,26 @@ export function ContentWithImage({
       className="relative py-20 px-6 scroll-mt-20"
     >
       <div className="max-w-screen-md mx-auto">
-        <div className={`flex flex-col md:flex-row gap-12 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
+        <div
+          className={`flex flex-col md:flex-row gap-12 ${
+            isReversed ? "md:flex-row-reverse" : ""
+          }`}
+        >
           {/* Image - visible on all screens */}
-          <div className="w-full md:w-auto">
-            <div className="w-full md:w-64 h-48 md:h-64">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-accent">
-                <StrapiImage
-                  src={image.url}
-                  alt={image.alternativeText}
-                  className="object-cover"
-                  fill
-                />
+          {image && (
+            <div className="w-full md:w-auto">
+              <div className="w-full md:w-64 h-48 md:h-64">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-accent">
+                  <StrapiImage
+                    src={image.url}
+                    alt={image.alternativeText}
+                    className="object-cover"
+                    fill
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Content */}
           <div className="flex-1 md:text-left">

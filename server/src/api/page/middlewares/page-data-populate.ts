@@ -1,5 +1,5 @@
 /**
- * `experience-data-populate` middleware
+ * `page-data-populate` middleware
  */
 
 import type { Core } from "@strapi/strapi";

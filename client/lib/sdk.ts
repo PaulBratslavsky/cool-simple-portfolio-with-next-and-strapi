@@ -2,7 +2,7 @@ import { getStrapiURL } from "@/lib/utils";
 import { strapi } from "@strapi/client";
 
 const BASE_API_URL = getStrapiURL() + "/api";
-const sdk = strapi({ baseURL: BASE_API_URL, auth: process.env.STRAPI_API_KEY });
+const sdk = strapi({ baseURL: BASE_API_URL });
 
 type StrapiFilterOperator = {
   $eq?: string | number | boolean;
@@ -30,6 +30,7 @@ type StrapiParams = {
     page?: number;
     pageSize?: number;
   };
+  status?: "draft" | "published" | undefined;
 };
 
 async function getAllCollection(collection: string, params: StrapiParams = {}) {

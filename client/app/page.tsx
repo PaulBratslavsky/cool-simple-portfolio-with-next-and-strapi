@@ -2,12 +2,14 @@ import { getHomePageData } from "@/loaders";
 import { BlockRenderer } from "@/components/block-renderer";
 import { Block } from "@/types";
 import { notFound } from "next/navigation";
+import { draftMode } from "next/headers";
 
-async function loader(): Promise<Block[]> {
+
+async function loader(status: string): Promise<Block[]> {
   try {
-    const data = await getHomePageData();
-    if (!data?.data?.blocks) return notFound();
-    return data.data.blocks;
+    const data = await getHomePageData(status);
+    if (!data) return notFound();
+    return data;
   } catch (error) {
     console.error(error);
     throw error;
@@ -15,7 +17,8 @@ async function loader(): Promise<Block[]> {
 }
 
 export default async function Home() {
-  const data = await loader();
-
+  const { isEnabled: isDraftMode } = await draftMode();
+  const status = isDraftMode ? "draft" : "published";
+  const data = await loader(status);
   return <div>{data ? <BlockRenderer blocks={data} /> : null}</div>;
 }
