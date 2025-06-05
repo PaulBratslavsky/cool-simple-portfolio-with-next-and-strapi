@@ -2,9 +2,10 @@ import { HeroProps } from "@/types";
 
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { CircleArrowDown, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Hero({ badge, heading, content, cta }: HeroProps) {
   return (
@@ -31,8 +32,10 @@ export function Hero({ badge, heading, content, cta }: HeroProps) {
         <p className="mt-6 text-[17px] md:text-lg">{content}</p>
         <div className="mt-12 flex items-center justify-center gap-4">
           {cta && (
-            <Button size="lg" className="rounded-full text-base" variant={cta?.style === "PRIMARY" ? "default" : "secondary"}>
-              {cta.label} <CircleArrowDown className="ml-2 !h-5.5 !w-5.5" />
+            <Button asChild className="rounded-full text-base" variant={cta?.style === "PRIMARY" ? "default" : "secondary"}>
+              <Link href={cta.href}>
+                {cta.label} <CircleArrowDown className="ml-2 !h-5.5 !w-5.5" />
+              </Link>
             </Button>
           )}
         </div>

@@ -54,11 +54,6 @@ const populateQuery = {
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {
   // Add your own logic here.
-
-  console.log("--------------------------------");
-  console.log("From experience-data-populate middleware");
-  console.log("--------------------------------");
-
   return async (ctx, next) => {
     strapi.log.info("In global-data-populate middleware.");
     ctx.query = {

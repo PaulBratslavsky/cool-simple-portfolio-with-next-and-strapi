@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_global_navigations",
+  "info": {
+    "displayName": "Navigation"
+  },
+  "options": {},
+  "attributes": {
+    "navItems": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

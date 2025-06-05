@@ -66,6 +66,37 @@ export interface BlocksSectionHeading extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalNavigation extends Struct.ComponentSchema {
+  collectionName: 'components_global_navigations';
+  info: {
+    displayName: 'Navigation';
+  };
+  attributes: {
+    navItems: Schema.Attribute.Component<'shared.link', true>;
+  };
+}
+
+export interface GlobalSocial extends Struct.ComponentSchema {
+  collectionName: 'components_global_socials';
+  info: {
+    displayName: 'Social';
+  };
+  attributes: {
+    socialLink: Schema.Attribute.Component<'shared.link', true>;
+  };
+}
+
+export interface SharedImageLink extends Struct.ComponentSchema {
+  collectionName: 'components_shared_image_links';
+  info: {
+    displayName: 'Image Link';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'shared.link', false>;
+  };
+}
+
 export interface SharedLink extends Struct.ComponentSchema {
   collectionName: 'components_shared_links';
   info: {
@@ -98,6 +129,9 @@ declare module '@strapi/strapi' {
       'blocks.featured-projects': BlocksFeaturedProjects;
       'blocks.hero': BlocksHero;
       'blocks.section-heading': BlocksSectionHeading;
+      'global.navigation': GlobalNavigation;
+      'global.social': GlobalSocial;
+      'shared.image-link': SharedImageLink;
       'shared.link': SharedLink;
       'shared.tasks': SharedTasks;
     }

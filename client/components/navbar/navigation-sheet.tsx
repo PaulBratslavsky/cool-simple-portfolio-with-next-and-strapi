@@ -1,10 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { Logo } from "./logo";
-import { NavMenu } from "./nav-menu";
+import { NavLink, Logo } from "@/types";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-export const NavigationSheet = () => {
+import { LogoLink } from "@/components/navbar/logo-link";
+import { NavMenu } from "@/components/navbar/nav-menu";
+
+interface NavigationSheetProps {
+  logo: Logo;
+  navItems: NavLink[];
+}
+
+export function NavigationSheet({
+  logo,
+  navItems,
+}: NavigationSheetProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -13,9 +29,12 @@ export const NavigationSheet = () => {
         </Button>
       </SheetTrigger>
       <SheetContent className="pt-3 px-6">
-        <Logo />
-        <NavMenu orientation="vertical" className="mt-12" />
+        <VisuallyHidden asChild>
+          <SheetTitle>Navigation Menu</SheetTitle>
+        </VisuallyHidden>
+        <LogoLink image={logo.image} link={logo.link} />
+        <NavMenu navItems={navItems} className="mt-12" useSheetClose />
       </SheetContent>
     </Sheet>
   );
-};
+}

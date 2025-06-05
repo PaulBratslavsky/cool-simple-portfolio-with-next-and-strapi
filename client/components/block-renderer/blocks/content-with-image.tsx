@@ -20,8 +20,9 @@ export function ContentWithImage({
     >
       <div className="max-w-screen-md mx-auto">
         <div className={`flex flex-col md:flex-row gap-12 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
-          <div className="hidden md:block">
-            <div className="mt-10 w-48 h-48 md:w-64 md:h-64">
+          {/* Image - visible on all screens */}
+          <div className="w-full md:w-auto">
+            <div className="w-full md:w-64 h-48 md:h-64">
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-accent">
                 <StrapiImage
                   src={image.url}
@@ -38,18 +39,6 @@ export function ContentWithImage({
             <Badge variant="secondary" className="mb-4">
               {badge}
             </Badge>
-            <div className="mt-3 mb-8 block md:hidden">
-              <div className="mt-10 w-48 h-48 md:w-64 md:h-64">
-                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-accent">
-                  <StrapiImage
-                    src={image.url}
-                    alt={image.alternativeText}
-                    className="object-cover"
-                    fill
-                  />
-                </div>
-              </div>
-            </div>
             <h2 className="text-4xl font-bold mb-4 tracking-tight">
               {heading}
             </h2>

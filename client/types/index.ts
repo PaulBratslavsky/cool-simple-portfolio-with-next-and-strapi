@@ -13,26 +13,50 @@ type ComponentType =
   | "blocks.featured-experience"
   | "blocks.featured-projects";
 
+export type NavLink = {
+  href: string;
+  label: string;
+  isExternal: boolean;
+  style: "PRIMARY" | "SECONDARY";
+};
+
+export type Logo = {
+  image: Image;
+  link: NavLink;
+};
+
+export type Navigation = {
+  navItems: NavLink[];
+};
+
+export type SocialLinks = {
+  socialLink: NavLink[];
+};
+
+export type Technology = {
+  id: string;
+  documentId: string;
+  title: string;
+  description: string;
+};
+
+export type Project = {
+  id: string;
+  documentId: string;
+  title: string;
+  description: string;
+  liveUrl: string;
+  repoUrl: string;
+  image: Image;
+  technologies: Technology[];
+};
+
 interface Base<T extends ComponentType, D extends object = object> {
   __component: T;
   id: string;
   createdAt: string;
   updatedAt: string;
   data: D;
-}
-
-export interface NavLink {
-  href: string;
-  label: string;
-  isExternal: boolean;
-  style: "PRIMARY" | "SECONDARY";
-}
-
-export interface Technology {
-  id: string;
-  documentId: string;
-  title: string;
-  description: string;
 }
 
 export type Block =
@@ -67,7 +91,7 @@ export interface ContentWithImageProps
   sectionLink?: string;
   image: Image;
   links?: NavLink[];
-  }
+}
 
 export interface Experience {
   id: string;
@@ -85,15 +109,18 @@ export interface FeaturedExperienceProps
   experiences: Experience[];
 }
 
-export interface Project {
-  id: string;
+export interface GlobalPageProps {
+  id: number;
   documentId: string;
   title: string;
   description: string;
-  liveUrl: string;
-  repoUrl: string;
-  image: Image;
-  technologies: Technology[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  logo: Logo;
+  navigation: Navigation;
+  socialLinks: SocialLinks;
+  text: string;
 }
 
 export interface FeaturedProjectsProps
